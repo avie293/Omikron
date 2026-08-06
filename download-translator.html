@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omikron Translator - Download</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+
+<body class="min-h-screen text-white w-full bg-[#0a0a0f] flex flex-col justify-between">
+
+  <header class="w-full py-3 px-4 flex items-center justify-between flex-wrap gap-4 bg-black/40 backdrop-blur-md border-b border-white/10 z-50 fixed top-0 left-0">
+    <div class="bg-white rounded-xl p-1.5 flex items-center justify-center shrink-0 shadow-sm">
+      <img class="h-8 w-auto" loading="lazy" src="assets/logo.png" alt="Omikron Logo">
+    </div>
+    
+    <nav class="hidden md:flex items-center gap-2">
+      <a href="index.html" class="nav-pill">Home</a> 
+      
+      <div class="downloads-wrap">
+        <button class="nav-pill" aria-haspopup="true">Downloads</button> 
+        <div class="downloads-menu">
+          <div class="downloads-menu-inner">
+            <a href="download-omikron.html" class="nav-pill download-option" role="menuitem">Omikron</a>
+            <a href="download-translator.html" class="nav-pill download-option" role="menuitem">Omikron Translator</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="wiki.html" target="_blank" rel="noopener noreferrer" class="nav-pill">Wiki</a> 
+      <a href="https://github.com/avie293/Omikron" target="_blank" rel="noopener noreferrer" class="nav-pill">Source</a> 
+      <a href="https://github.com/avie293/Omikron/issues" target="_blank" rel="noopener noreferrer" class="nav-pill">Issues</a>
+      
+      <a href="admin.html" id="header-admin-btn" class="nav-pill bg-blue-500/20 border-blue-500/40 text-blue-400 hidden items-center gap-1.5">
+        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Admin
+      </a>
+
+      <div id="header-auth-container" class="ml-1"></div>
+    </nav>
+    
+    <button id="mobile-toggle" class="md:hidden p-2 rounded-lg hover:bg-white/10" aria-label="Menu"> 
+      <i data-lucide="menu" class="w-6 h-6 text-white"></i> 
+    </button>
+  </header>
+
+  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 bg-black/90 backdrop-blur-lg border-b border-white/10 fixed top-16 left-0 w-full z-40">
+    <a href="index.html" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Home</a> 
+    <a href="download-omikron.html" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Download: Omikron</a>
+    <a href="download-translator.html" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Download: Translator</a>
+    <a href="wiki.html" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Wiki</a>
+    <a href="https://github.com/avie293/Omikron" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Source</a> 
+    <a href="https://github.com/avie293/Omikron/issues" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Issues</a>
+    <a href="admin.html" id="mobile-admin-btn" class="hidden px-4 py-2 rounded-lg bg-blue-500/20 text-blue-400 text-sm items-center gap-2">Admin Panel</a>
+    <div id="mobile-auth-container" class="pt-2 border-t border-white/10"></div>
+  </div>
+
+  <section id="home" class="hero-section w-full flex flex-col items-center justify-center text-center px-4 min-h-screen pt-28 pb-16 flex-grow">
+    <img class="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" src="assets/background.png" alt="Omikron Background">
+    
+    <div class="z-10 w-full max-w-3xl mx-auto space-y-4 text-left">
+        
+        <div class="rounded-2xl p-6 bg-black/60 backdrop-blur-md border border-white/10 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+                <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold rounded-full inline-block mb-2">Library Mod</span>
+                <h1 class="text-2xl md:text-3xl font-extrabold text-white">Omikron Translator</h1>
+                <p id="download-count-translator" class="text-sm text-gray-400 mt-1">Loading downloads…</p>
+            </div>
+            <a id="download-btn-translator" href="#" class="custom-button bg-blue-500 hover:bg-blue-600 text-white shadow-lg flex items-center gap-2">
+                <i data-lucide="download" class="w-4 h-4"></i> Download Latest
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="rounded-2xl p-6 bg-black/60 backdrop-blur-md border border-white/10 shadow-xl flex flex-col justify-between">
+                <div>
+                    <h2 class="text-base font-bold mb-3 text-white">Download Information</h2>
+                    <div class="space-y-2">
+                        <p id="info-version-translator" class="text-sm text-gray-300">Version: Loading…</p>
+                        <p id="info-loaders-translator" class="text-sm text-gray-300">Modloader: Loading…</p>
+                    </div>
+                </div>
+                <p id="info-requires-translator" class="text-sm text-gray-300 pt-3 border-t border-white/10 mt-3">Requires: Loading…</p>
+            </div>
+
+            <div class="rounded-2xl p-6 bg-black/60 backdrop-blur-md border border-white/10 shadow-xl">
+                <h2 class="text-base font-bold mb-3 text-white">Minecraft Versions</h2>
+                <div id="info-mc-versions-translator" class="flex flex-wrap gap-1.5 items-center">
+                    <span class="text-gray-400 text-xs">Loading…</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="rounded-2xl p-6 bg-black/60 backdrop-blur-md border border-white/10 shadow-xl">
+            <h2 class="text-base font-bold mb-3 text-white flex items-center gap-2">
+                <i data-lucide="file-text" class="w-4 h-4 text-blue-400"></i> About the Mod
+            </h2>
+            <p class="text-sm text-gray-300 leading-relaxed">
+                A lightweight library mod providing translation and localization utilities for Omikron ecosystem mods.
+            </p>
+        </div>
+
+        <div class="rounded-2xl p-6 bg-black/60 backdrop-blur-md border border-white/10 shadow-xl space-y-4">
+            <h2 class="text-base font-bold mb-3 text-white flex items-center gap-2">
+                <i data-lucide="image" class="w-4 h-4 text-blue-400"></i> Gallery
+            </h2>
+            
+            <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black/40 border border-white/10">
+                
+                <div id="gallery-track" class="flex h-full w-full transition-transform duration-300 ease-out">
+                    <div class="min-w-full h-full flex-shrink-0 flex items-center justify-center">
+                        <img src="assets/translator-screenshot-1.png" alt="Omikron Screenshot 1" class="w-full h-full object-cover" onerror="this.src='assets/background.png'">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center items-center gap-2 pt-1">
+                <button class="gallery-dot w-2.5 h-2.5 rounded-full bg-blue-500 transition-all" data-index="0" aria-label="Slide 1"></button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="lg:hidden w-full max-w-3xl mx-auto mt-4 z-10 space-y-4">
+      <div class="rounded-2xl p-6 bg-black/60 backdrop-blur-md border border-white/10 text-left shadow-xl">
+        <h2 class="text-base font-bold mb-3 text-white flex items-center gap-2">
+          <i data-lucide="users" class="w-4 h-4 text-blue-400"></i> Team Members
+        </h2>
+        <div id="team-container-mobile" class="space-y-3">
+          <p class="text-gray-400 text-sm">Loading team…</p>
+        </div>
+      </div>
+      <div id="announcements-container-mobile" class="hidden"></div>
+    </div>
+  </section>
+
+  <aside aria-label="Team Members" class="hidden lg:flex flex-col fixed left-6 top-28 w-80 rounded-2xl p-5 bg-black/70 backdrop-blur-md border border-white/10 text-left shadow-2xl z-30 max-h-[calc(100vh-140px)]">
+    <h2 class="text-sm font-bold mb-3 text-white flex items-center gap-2 shrink-0">
+      <i data-lucide="users" class="w-4 h-4 text-blue-400"></i> Team Members
+    </h2>
+    <div id="team-container-desktop" class="space-y-3 overflow-y-auto pr-1">
+      <p class="text-gray-400 text-sm">Loading team…</p>
+    </div>
+  </aside>
+
+  <aside aria-label="Announcements" class="hidden">
+    <div id="announcements-container-desktop"></div>
+  </aside>
+
+  <footer class="w-full py-8 px-4 bg-black/80 backdrop-blur-md border-t border-white/10 text-center z-20 relative">
+    <div class="max-w-4xl mx-auto flex flex-col items-center gap-4">
+      <div class="flex flex-wrap justify-center gap-2">
+        <button id="btn-privacy" class="nav-pill text-xs">Privacy Policy</button>
+        <button id="btn-disclaimer" class="nav-pill text-xs">Mojang Disclaimer</button>
+      </div>
+      <a href="https://github.com/avie293/Omikron-License/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="hover:underline text-gray-400 transition">
+        © 2026 Omikron Mod. All rights reserved.
+    </a>
+    </div>
+  </footer>
+
+  <div id="modal-privacy" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#12121a] border border-white/15 rounded-2xl max-w-lg w-full p-6 text-left shadow-2xl relative">
+      <h3 class="text-lg font-bold mb-3 text-white">Privacy Policy</h3>
+      <p class="text-sm text-gray-300 mb-4 leading-relaxed">
+        This website is a purely private fan project for the Minecraft modification "Omikron". We do not collect, store, or process any personal user data on our own servers. 
+        <br><br>
+        To make this site function, it utilizes external CDNs (Tailwind CSS, Google Fonts, Lucide Icons) and fetches public project statistics and download data directly from the official <strong>Modrinth API</strong>. When accessing this site, your IP address is technically transmitted to these respective service providers.
+      </p>
+      <button id="close-privacy" class="nav-pill w-full justify-center">Close</button>
+    </div>
+  </div>
+
+  <div id="modal-disclaimer" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#12121a] border border-white/15 rounded-2xl max-w-lg w-full p-6 text-left shadow-2xl relative">
+      <h3 class="text-lg font-bold mb-3 text-white">Mojang Disclaimer</h3>
+      <p class="text-sm text-gray-300 mb-4 leading-relaxed">
+        Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft. 
+        <br><br>
+        All Minecraft game content, assets, and materials are copyrights and trademarks of Mojang Studios or their respective licensors.
+      </p>
+      <button id="close-disclaimer" class="nav-pill w-full justify-center">Close</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const track = document.getElementById('gallery-track');
+      const slides = document.querySelectorAll('#gallery-track > div');
+      const dots = document.querySelectorAll('.gallery-dot');
+      const prevBtn = document.getElementById('gallery-prev');
+      const nextBtn = document.getElementById('gallery-next');
+      let currentIndex = 0;
+
+      function updateSlide(index) {
+        if (!track) return;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        
+        dots.forEach((dot, i) => {
+          if (i === index) {
+            dot.classList.remove('bg-white/30');
+            dot.classList.add('bg-blue-500');
+          } else {
+            dot.classList.remove('bg-blue-500');
+            dot.classList.add('bg-white/30');
+          }
+        });
+        currentIndex = index;
+      }
+
+      if (prevBtn && nextBtn && track) {
+        prevBtn.addEventListener('click', () => {
+          let newIndex = currentIndex - 1;
+          if (newIndex < 0) newIndex = slides.length - 1;
+          updateSlide(newIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+          let newIndex = currentIndex + 1;
+          if (newIndex >= slides.length) newIndex = 0;
+          updateSlide(newIndex);
+        });
+
+        dots.forEach((dot, i) => {
+          dot.addEventListener('click', () => {
+            updateSlide(i);
+          });
+        });
+      }
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+
+</body>
+</html>

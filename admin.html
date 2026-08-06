@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omikron - Admin Panel</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body class="min-h-screen text-white w-full bg-[#0a0a0f] flex flex-col justify-between relative overflow-x-hidden">
+
+  <img class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none" loading="lazy" src="assets/background.png" alt="Omikron Background">
+
+  <header class="w-full py-3 px-4 flex items-center justify-between flex-wrap gap-4 bg-black/40 backdrop-blur-md border-b border-white/10 z-50 fixed top-0 left-0">
+    <div class="bg-white rounded-xl p-1.5 flex items-center justify-center shrink-0 shadow-sm">
+      <img class="h-8 w-auto" loading="lazy" src="assets/logo.png" alt="Omikron Logo">
+    </div>
+    
+    <nav class="hidden md:flex items-center gap-2">
+      <a href="index.html" class="nav-pill">Home</a> 
+      
+      <div class="downloads-wrap">
+        <button class="nav-pill" aria-haspopup="true">Downloads</button> 
+        <div class="downloads-menu">
+          <div class="downloads-menu-inner">
+            <a href="download-omikron.html" class="nav-pill download-option" role="menuitem">Omikron</a>
+            <a href="download-translator.html" class="nav-pill download-option" role="menuitem">Omikron Translator</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="wiki.html" target="_blank" rel="noopener noreferrer" class="nav-pill">Wiki</a> 
+      <a href="https://github.com/avie293/Omikron" target="_blank" rel="noopener noreferrer" class="nav-pill">Source</a> 
+      <a href="https://github.com/avie293/Omikron/issues" target="_blank" rel="noopener noreferrer" class="nav-pill">Issues</a>
+      
+      <a href="admin.html" id="header-admin-btn" class="nav-pill bg-blue-500/20 border-blue-500/40 text-blue-400 hidden items-center gap-1.5">
+        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Admin
+      </a>
+
+      <div id="header-auth-container" class="ml-1"></div>
+    </nav>
+    
+    <button id="mobile-toggle" class="md:hidden p-2 rounded-lg hover:bg-white/10" aria-label="Menu"> 
+      <i data-lucide="menu" class="w-6 h-6 text-white"></i> 
+    </button>
+  </header>
+
+  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 bg-black/90 backdrop-blur-lg border-b border-white/10 fixed top-16 left-0 w-full z-40">
+    <a href="index.html" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Home</a> 
+    <a href="download-omikron.html" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Download: Omikron</a>
+    <a href="download-translator.html" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Download: Translator</a>
+    <a href="wiki.html" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Wiki</a>
+    <a href="https://github.com/avie293/Omikron" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Source</a> 
+    <a href="https://github.com/avie293/Omikron/issues" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Issues</a>
+    <a href="admin.html" id="mobile-admin-btn" class="hidden px-4 py-2 rounded-lg bg-blue-500/20 text-blue-400 text-sm items-center gap-2">Admin Panel</a>
+    <div id="mobile-auth-container" class="pt-2 border-t border-white/10"></div>
+  </div>
+
+  <main class="max-w-2xl mx-auto w-full pt-28 pb-16 z-10 px-4 flex-grow">
+    <div class="flex items-center justify-between mb-8">
+      <h1 class="text-2xl font-bold">Omikron Admin Panel</h1>
+      <a href="index.html" class="nav-pill text-xs">Back to Website</a>
+    </div>
+
+    <div id="login-container" class="rounded-2xl p-6 bg-black/60 backdrop-blur-md border border-white/10 shadow-xl mb-8">
+      <h2 class="text-base font-bold mb-3 text-white flex items-center gap-2">
+        <i data-lucide="lock" class="w-4 h-4 text-blue-400"></i> Modrinth Projekt-Login
+      </h2>
+      <p class="text-sm text-gray-300 mb-3 leading-relaxed">
+        Dieses Admin-Panel ist nur für Projektmitglieder zugänglich. Gib dein Modrinth Personal Access Token ein, um deine Team-Berechtigung zu prüfen.
+      </p>
+      <p class="text-xs text-gray-400 mb-4">
+        Token erstellen: <a href="https://modrinth.com/settings/tokens" target="_blank" rel="noopener noreferrer" class="text-blue-400 underline hover:text-blue-300">Modrinth Account Settings</a>
+      </p>
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-gray-300 mb-1">Modrinth Token</label>
+          <input type="password" id="modrinth-token-input" required class="w-full px-4 py-2 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-blue-500" placeholder="mrp_...">
+        </div>
+        <button type="submit" id="login-btn" class="custom-button bg-blue-500 hover:bg-blue-600 text-white w-full text-center">Mit Modrinth Account verifizieren</button>
+        <p id="login-error" class="text-red-400 text-xs mt-2 hidden"></p>
+      </form>
+    </div>
+
+    <div id="admin-content" class="hidden space-y-8">
+      
+      <div class="flex items-center justify-between bg-white/5 p-4 rounded-2xl border border-white/10">
+        <div class="flex items-center gap-2 text-sm text-gray-300">
+          <i data-lucide="user-check" class="w-4 h-4 text-green-400"></i>
+          <span>Eingeloggt als: <strong id="auth-username" class="text-white"></strong> (Modrinth Teammitglied)</span>
+        </div>
+        <button id="logout-btn" class="nav-pill text-xs text-red-400 hover:text-red-300">Abmelden</button>
+      </div>
+
+      <div class="rounded-2xl p-6 bg-black/60 backdrop-blur-md border border-white/10 shadow-xl">
+        <h2 class="text-base font-bold mb-4 text-white">Create New Announcement</h2>
+        <form id="post-form" class="space-y-4">
+          <div>
+            <label class="block text-xs font-medium text-gray-300 mb-1">Category</label>
+            <select id="post-category" class="w-full px-4 py-2 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-blue-500">
+              <option value="Update" class="bg-[#12121a] text-white">Update</option>
+              <option value="Info" class="bg-[#12121a] text-white">Info</option>
+              <option value="Important" class="bg-[#12121a] text-white">Important</option>
+              <option value="Event" class="bg-[#12121a] text-white">Event</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-gray-300 mb-1">Title</label>
+            <input type="text" id="post-title" required class="w-full px-4 py-2 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-blue-500" placeholder="e.g., v1.2.0 Update Released">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-gray-300 mb-1">Content (URLs like https://... will become clickable links)</label>
+            <textarea id="post-content" rows="3" required class="w-full px-4 py-2 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-blue-500" placeholder="Write your announcement here..."></textarea>
+          </div>
+          <button type="submit" class="custom-button bg-blue-500 hover:bg-blue-600 text-white w-full text-center">Publish Post</button>
+        </form>
+      </div>
+
+      <div class="rounded-2xl p-6 bg-black/60 backdrop-blur-md border border-white/10 shadow-xl">
+        <h2 class="text-base font-bold mb-4 text-white">Post History</h2>
+        <div id="admin-history" class="space-y-3 max-h-[350px] overflow-y-auto pr-1">
+          <p class="text-gray-400 text-xs">No posts found.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="w-full py-8 px-4 bg-black/80 backdrop-blur-md border-t border-white/10 text-center z-20 relative">
+    <div class="max-w-4xl mx-auto flex flex-col items-center gap-4">
+      <div class="flex flex-wrap justify-center gap-2">
+        <button id="btn-privacy" class="nav-pill text-xs">Privacy Policy</button>
+        <button id="btn-disclaimer" class="nav-pill text-xs">Mojang Disclaimer</button>
+      </div>
+      <a href="https://github.com/avie293/Omikron-License/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="hover:underline text-gray-400 transition">
+        © 2026 Omikron Mod. All rights reserved.
+    </a>
+    </div>
+  </footer>
+
+  <div id="modal-privacy" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#12121a] border border-white/15 rounded-2xl max-w-lg w-full p-6 text-left shadow-2xl relative">
+      <h3 class="text-lg font-bold mb-3 text-white">Privacy Policy</h3>
+      <p class="text-sm text-gray-300 mb-4 leading-relaxed">
+        This website is a purely private fan project for the Minecraft modification "Omikron". We do not collect, store, or process any personal user data on our own servers. 
+        <br><br>
+        To make this site function, it utilizes external CDNs (Tailwind CSS, Google Fonts, Lucide Icons) and fetches public project statistics and download data directly from the official <strong>Modrinth API</strong>. When accessing this site, your IP address is technically transmitted to these respective service providers.
+      </p>
+      <button id="close-privacy" class="nav-pill w-full justify-center">Close</button>
+    </div>
+  </div>
+
+  <div id="modal-disclaimer" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#12121a] border border-white/15 rounded-2xl max-w-lg w-full p-6 text-left shadow-2xl relative">
+      <h3 class="text-lg font-bold mb-3 text-white">Mojang Disclaimer</h3>
+      <p class="text-sm text-gray-300 mb-4 leading-relaxed">
+        Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft. 
+        <br><br>
+        All Minecraft game content, assets, and materials are copyrights and trademarks of Mojang Studios or their respective licensors.
+      </p>
+      <button id="close-disclaimer" class="nav-pill w-full justify-center">Close</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+
+      const PROJECT_SLUG = 'avies-day-counter'; 
+      
+      const loginContainer = document.getElementById('login-container');
+      const adminContent = document.getElementById('admin-content');
+      const loginForm = document.getElementById('login-form');
+      const loginError = document.getElementById('login-error');
+      const loginBtn = document.getElementById('login-btn');
+      const authUsername = document.getElementById('auth-username');
+      const logoutBtn = document.getElementById('logout-btn');
+
+      const form = document.getElementById('post-form');
+      const historyContainer = document.getElementById('admin-history');
+
+      checkExistingSession();
+
+      async function checkExistingSession() {
+        const savedToken = localStorage.getItem('omikron_modrinth_token');
+        const savedUser = localStorage.getItem('omikron_modrinth_user');
+        if (savedToken && savedUser) {
+          authUsername.textContent = savedUser;
+          loginContainer.classList.add('hidden');
+          adminContent.classList.remove('hidden');
+          renderHistory();
+        }
+      }
+
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const token = document.getElementById('modrinth-token-input').value.trim();
+        loginError.classList.add('hidden');
+        loginBtn.textContent = 'Prüfe Berechtigung...';
+        loginBtn.disabled = true;
+
+        try {
+          const apiHeaders = {
+            'Authorization': token,
+            'User-Agent': 'OmikronWebsite/1.0 (admin-panel@omikron)'
+          };
+
+          const userRes = await fetch('https://api.modrinth.com/v2/user', { headers: apiHeaders });
+          if (!userRes.ok) throw new Error('Ungültiges Modrinth Token.');
+          const userData = await userRes.json();
+          const userId = userData.id;
+          const username = userData.username;
+
+          const membersRes = await fetch(`https://api.modrinth.com/v2/project/${PROJECT_SLUG}/members`, { headers: apiHeaders });
+          if (!membersRes.ok) throw new Error('Projekt konnte auf Modrinth nicht gefunden werden (Prüfe den Projektnamen/Slug).');
+          const members = await membersRes.json();
+
+          const isMember = members.some(m => m.user.id === userId);
+          if (!isMember) {
+            throw new Error('Zugriff verweigert: Du bist kein eingetragenes Teammitglied dieses Projekts auf Modrinth.');
+          }
+
+          localStorage.setItem('omikron_modrinth_token', token);
+          localStorage.setItem('omikron_modrinth_user', username);
+
+          authUsername.textContent = username;
+          loginContainer.classList.add('hidden');
+          adminContent.classList.remove('hidden');
+          renderHistory();
+          loginForm.reset();
+        } catch (err) {
+          loginError.textContent = err.message || 'Authentifizierung fehlgeschlagen.';
+          loginError.classList.remove('hidden');
+        } finally {
+          loginBtn.textContent = 'Mit Modrinth Account verifizieren';
+          loginBtn.disabled = false;
+        }
+      });
+
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('omikron_modrinth_token');
+        localStorage.removeItem('omikron_modrinth_user');
+        adminContent.classList.add('hidden');
+        loginContainer.classList.remove('hidden');
+      });
+
+      function getPosts() {
+        const stored = localStorage.getItem('omikron_announcements');
+        return stored ? JSON.parse(stored) : [];
+      }
+
+      function savePosts(posts) {
+        localStorage.setItem('omikron_announcements', JSON.stringify(posts));
+      }
+
+      function getCategoryIconName(category) {
+        switch(category) {
+          case 'Update': return 'refresh-cw';
+          case 'Important': return 'alert-triangle';
+          case 'Event': return 'calendar';
+          case 'Info': default: return 'info';
+        }
+      }
+
+      function renderHistory() {
+        const posts = getPosts();
+        if (posts.length === 0) {
+          historyContainer.innerHTML = '<p class="text-gray-400 text-xs">No posts found.</p>';
+          return;
+        }
+
+        historyContainer.innerHTML = posts.map((post, index) => {
+          const iconName = getCategoryIconName(post.category);
+          return `
+            <div class="flex justify-between items-start bg-white/5 p-3 rounded-xl border border-white/10">
+              <div>
+                <div class="flex items-center gap-2 mb-1 flex-wrap">
+                  <i data-lucide="${iconName}" class="w-4 h-4 text-blue-400 shrink-0"></i>
+                  <h3 class="text-sm font-bold text-white">${escapeHtml(post.title)}</h3>
+                  <span class="text-xs px-2 py-0.5 rounded bg-white/10 text-gray-300">${escapeHtml(post.category || 'Info')}</span>
+                  <span class="text-xs text-gray-400">${escapeHtml(post.date)}</span>
+                </div>
+                <p class="text-sm text-gray-300 leading-relaxed">${linkifyAndEscape(post.content)}</p>
+              </div>
+              <button onclick="deletePost(${index})" class="p-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/40 text-red-400 transition ml-2 shrink-0" title="Delete">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+          `;
+        }).join('');
+        
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      }
+
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const category = document.getElementById('post-category').value;
+          const title = document.getElementById('post-title').value;
+          const content = document.getElementById('post-content').value;
+          const date = new Date().toISOString().split('T')[0];
+
+          const posts = getPosts();
+          posts.unshift({ title, content, date, category });
+          
+          savePosts(posts);
+          form.reset();
+          renderHistory();
+        });
+      }
+
+      window.deletePost = function(index) {
+        const posts = getPosts();
+        posts.splice(index, 1);
+        savePosts(posts);
+        renderHistory();
+      };
+
+      function escapeHtml(str) {
+        return str.replace(/[&<>'"]/g, 
+          tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+        );
+      }
+
+      function linkifyAndEscape(str) {
+        if (!str) return '';
+        const escaped = escapeHtml(str);
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+        return escaped.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-400 underline hover:text-blue-300">$1</a>');
+      }
+    });
+  </script>
+</body>
+</html>

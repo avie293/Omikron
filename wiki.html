@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omikron - Wiki</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+
+<body class="min-h-screen text-white w-full bg-[#0a0a0f] flex flex-col justify-between">
+
+  <header class="w-full py-3 px-4 flex items-center justify-between flex-wrap gap-4 bg-black/40 backdrop-blur-md border-b border-white/10 z-50 fixed top-0 left-0">
+    <div class="bg-white rounded-xl p-1.5 flex items-center justify-center shrink-0 shadow-sm">
+      <img class="h-8 w-auto" loading="lazy" src="assets/logo.png" alt="Omikron Logo">
+    </div>
+    
+    <nav class="hidden md:flex items-center gap-2">
+      <a href="index.html" class="nav-pill">Home</a> 
+      
+      <div class="downloads-wrap">
+        <button class="nav-pill" aria-haspopup="true">Downloads</button> 
+        <div class="downloads-menu">
+          <div class="downloads-menu-inner">
+            <a href="download-omikron.html" class="nav-pill download-option" role="menuitem">Omikron</a>
+            <a href="download-translator.html" class="nav-pill download-option" role="menuitem">Omikron Translator</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="wiki.html" class="nav-pill bg-white/10 text-white">Wiki</a> 
+      <a href="https://github.com/avie293/Omikron" target="_blank" rel="noopener noreferrer" class="nav-pill">Source</a> 
+      <a href="https://github.com/avie293/Omikron/issues" target="_blank" rel="noopener noreferrer" class="nav-pill">Issues</a>
+      
+      <a href="admin.html" id="header-admin-btn" class="nav-pill bg-blue-500/20 border-blue-500/40 text-blue-400 hidden items-center gap-1.5">
+        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Admin
+      </a>
+
+      <div id="header-auth-container" class="ml-1"></div>
+    </nav>
+    
+    <button id="mobile-toggle" class="md:hidden p-2 rounded-lg hover:bg-white/10" aria-label="Menu"> 
+      <i data-lucide="menu" class="w-6 h-6 text-white"></i> 
+    </button>
+  </header>
+
+  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 bg-black/90 backdrop-blur-lg border-b border-white/10 fixed top-16 left-0 w-full z-40">
+    <a href="index.html" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Home</a> 
+    <a href="download-omikron.html" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Download: Omikron</a>
+    <a href="download-translator.html" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Download: Translator</a>
+    <a href="wiki.html" class="block px-4 py-2 rounded-lg bg-white/10 text-sm">Wiki</a>
+    <a href="https://github.com/avie293/Omikron" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Source</a> 
+    <a href="https://github.com/avie293/Omikron/issues" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded-lg hover:bg-white/10 text-sm">Issues</a>
+    <a href="admin.html" id="mobile-admin-btn" class="hidden px-4 py-2 rounded-lg bg-blue-500/20 text-blue-400 text-sm items-center gap-2">Admin Panel</a>
+    <div id="mobile-auth-container" class="pt-2 border-t border-white/10"></div>
+  </div>
+
+  <section id="home" class="hero-section w-full flex flex-col items-center justify-center text-center px-4 min-h-screen pt-28 pb-16 flex-grow relative">
+    <img class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none" loading="lazy" src="assets/background.png" alt="Omikron Background">
+    
+    <div class="z-10 w-full max-w-3xl mx-auto space-y-6 text-left">
+        
+        <div class="rounded-2xl p-6 bg-black/65 backdrop-blur-md border border-white/10 shadow-xl">
+            <h2 class="text-base font-bold mb-3 text-white flex items-center gap-2">
+                <i data-lucide="book-open" class="w-4 h-4 text-blue-400"></i> Wiki Navigation
+            </h2>
+            <div class="flex flex-wrap gap-2 text-sm">
+                <a href="#introduction" class="nav-pill text-xs">Introduction</a>
+                <a href="#installation" class="nav-pill text-xs">Installation</a>
+                <a href="#configuration" class="nav-pill text-xs">Configuration</a>
+                <a href="#translator-api" class="nav-pill text-xs">Translator API</a>
+                <a href="#faq" class="nav-pill text-xs">FAQ</a>
+            </div>
+        </div>
+
+        <div id="introduction" class="rounded-2xl p-6 md:p-8 bg-black/60 backdrop-blur-md border border-white/10 shadow-xl space-y-4">
+            <h1 class="text-2xl md:text-3xl font-extrabold text-white">Introduction</h1>
+            <p class="text-sm text-gray-300 leading-relaxed">
+                Welcome to the official Omikron Wiki. Omikron is a high-performance Minecraft mod designed to elevate your game experience with modern rendering techniques, smooth optimizations, and developer-friendly utilities.
+            </p>
+            <p class="text-sm text-gray-300 leading-relaxed">
+                Use this documentation to learn how to install, configure, and integrate Omikron into your modpacks or servers.
+            </p>
+        </div>
+
+        <div id="installation" class="rounded-2xl p-6 md:p-8 bg-black/60 backdrop-blur-md border border-white/10 shadow-xl space-y-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <i data-lucide="download" class="w-5 h-5 text-blue-400"></i> Installation
+            </h2>
+            <p class="text-sm text-gray-300 leading-relaxed">
+                To run Omikron successfully, ensure you have a compatible modloader installed (such as Fabric or Forge depending on the release version).
+            </p>
+            <ol class="list-decimal list-inside space-y-2 text-sm text-gray-300">
+                <li>Download the latest version of Omikron from the <a href="omikron.html" class="text-blue-400 hover:underline">Download page</a>.</li>
+                <li>Ensure required dependencies (like <a href="translator.html" class="text-blue-400 hover:underline">Omikron Translator</a>) are placed in your <code class="bg-white/10 px-1.5 py-0.5 rounded text-xs">mods</code> folder.</li>
+                <li>Launch your Minecraft client or server.</li>
+            </ol>
+        </div>
+
+        <div id="configuration" class="rounded-2xl p-6 md:p-8 bg-black/60 backdrop-blur-md border border-white/10 shadow-xl space-y-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <i data-lucide="settings" class="w-5 h-5 text-blue-400"></i> Configuration
+            </h2>
+            <p class="text-sm text-gray-300 leading-relaxed">
+                Omikron automatically generates a configuration file in your config directory once launched for the first time. You can fine-tune rendering parameters, performance options, and logging settings directly via the config file or in-game menu.
+            </p>
+        </div>
+
+        <div id="translator-api" class="rounded-2xl p-6 md:p-8 bg-black/60 backdrop-blur-md border border-white/10 shadow-xl space-y-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <i data-lucide="code" class="w-5 h-5 text-blue-400"></i> Translator API
+            </h2>
+            <p class="text-sm text-gray-300 leading-relaxed">
+                The Omikron Translator library mod provides helper utilities and localization extensions for developers building addons or companion mods. Documentation for developers can be found on our GitHub repository.
+            </p>
+        </div>
+
+        <div id="faq" class="rounded-2xl p-6 md:p-8 bg-black/60 backdrop-blur-md border border-white/10 shadow-xl space-y-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <i data-lucide="help-circle" class="w-5 h-5 text-blue-400"></i> FAQ
+            </h2>
+            <div class="space-y-3">
+                <div>
+                    <h3 class="text-sm font-bold text-white">Is Omikron compatible with Optifine?</h3>
+                    <p class="text-xs text-gray-400 mt-1">Omikron uses its own rendering pipeline and is generally designed as a modern alternative, so running it alongside Optifine is not recommended.</p>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-white">Where can I report bugs?</h3>
+                    <p class="text-xs text-gray-400 mt-1">Please report any issues or crashes on our <a href="https://github.com/avie293/Omikron/issues" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">GitHub Issues page</a>.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="lg:hidden w-full max-w-3xl mx-auto mt-6 z-10 space-y-4">
+      <div class="rounded-2xl p-6 bg-black/65 backdrop-blur-md border border-white/10 text-left shadow-xl">
+        <h2 class="text-base font-bold mb-3 text-white flex items-center gap-2">
+          <i data-lucide="users" class="w-4 h-4 text-blue-400"></i> Team Members
+        </h2>
+        <div id="team-container-mobile" class="space-y-3">
+          <p class="text-gray-400 text-sm">Loading team…</p>
+        </div>
+      </div>
+      <div id="announcements-container-mobile" class="space-y-4"></div>
+    </div>
+  </section>
+
+  <aside aria-label="Team Members" class="hidden lg:flex flex-col fixed left-6 top-28 w-80 rounded-2xl p-5 bg-black/70 backdrop-blur-md border border-white/10 text-left shadow-2xl z-30 max-h-[calc(100vh-140px)]">
+    <h2 class="text-sm font-bold mb-3 text-white flex items-center gap-2 shrink-0">
+      <i data-lucide="users" class="w-4 h-4 text-blue-400"></i> Team Members
+    </h2>
+    <div id="team-container-desktop" class="space-y-3 overflow-y-auto pr-1">
+      <p class="text-gray-400 text-sm">Loading team…</p>
+    </div>
+  </aside>
+
+  <aside aria-label="Announcements" class="hidden lg:flex flex-col fixed right-6 top-28 w-80 rounded-2xl p-5 bg-black/70 backdrop-blur-md border border-white/10 text-left shadow-2xl z-30 max-h-[calc(100vh-140px)] overflow-y-auto">
+    <div id="announcements-container-desktop" class="space-y-4"></div>
+  </aside>
+
+  <footer class="w-full py-8 px-4 bg-black/80 backdrop-blur-md border-t border-white/10 text-center z-20 relative">
+    <div class="max-w-4xl mx-auto flex flex-col items-center gap-4">
+      <div class="flex flex-wrap justify-center gap-2">
+        <button id="btn-privacy" class="nav-pill text-xs">Privacy Policy</button>
+        <button id="btn-disclaimer" class="nav-pill text-xs">Mojang Disclaimer</button>
+      </div>
+      <p class="text-xs text-gray-500">
+        <a href="https://github.com/avie293/Omikron-License/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="hover:underline text-gray-400 transition">
+          © 2026 Omikron Mod. All rights reserved.
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <div id="modal-privacy" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#12121a] border border-white/15 rounded-2xl max-w-lg w-full p-6 text-left shadow-2xl relative">
+      <h3 class="text-lg font-bold mb-3 text-white">Privacy Policy</h3>
+      <p class="text-sm text-gray-300 mb-4 leading-relaxed">
+        This website is a purely private fan project for the Minecraft modification "Omikron". We do not collect, store, or process any personal user data on our own servers. 
+        <br><br>
+        To make this site function, it utilizes external CDNs (Tailwind CSS, Google Fonts, Lucide Icons) and fetches public project statistics and download data directly from the official <strong>Modrinth API</strong>. When accessing this site, your IP address is technically transmitted to these respective service providers.
+      </p>
+      <button id="close-privacy" class="nav-pill w-full justify-center">Close</button>
+    </div>
+  </div>
+
+  <div id="modal-disclaimer" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#12121a] border border-white/15 rounded-2xl max-w-lg w-full p-6 text-left shadow-2xl relative">
+      <h3 class="text-lg font-bold mb-3 text-white">Mojang Disclaimer</h3>
+      <p class="text-sm text-gray-300 mb-4 leading-relaxed">
+        Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft. 
+        <br><br>
+        All Minecraft game content, assets, and materials are copyrights and trademarks of Mojang Studios or their respective licensors.
+      </p>
+      <button id="close-disclaimer" class="nav-pill w-full justify-center">Close</button>
+    </div>
+  </div>
+
+</body>
+</html>
