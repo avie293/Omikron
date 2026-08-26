@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.rel = 'noopener noreferrer';
     });
 
-    const MODRINTH_SLUG = 'avies-health-indicator-legacy';
+    const MODRINTH_SLUG = 'avies-ping-display';
     const CURSEFORGE_DOWNLOADS = 0;
 
     const MODRINTH_SLUG_TRANSLATOR = 'omikron-translator';
